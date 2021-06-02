@@ -1,0 +1,11 @@
+framework module ZarinPal {
+  umbrella header "ZarinPal.h"
+
+  export *
+  module * { export * }
+}
+
+module ZarinPal.Swift {
+    header "ZarinPal-Swift.h"
+    requires objc
+}

@@ -13,7 +13,23 @@
 		CFE730D0266768E500B9E638 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFE730CE266768E500B9E638 /* Main.storyboard */; };
 		CFE730D2266768E600B9E638 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFE730D1266768E600B9E638 /* Assets.xcassets */; };
 		CFE730D5266768E600B9E638 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFE730D3266768E600B9E638 /* LaunchScreen.storyboard */; };
+		CFE730DE26676A1600B9E638 /* ZarinPal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFE730DC266769EC00B9E638 /* ZarinPal.framework */; };
+		CFE730DF26676A1600B9E638 /* ZarinPal.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CFE730DC266769EC00B9E638 /* ZarinPal.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		CFE730E026676A1600B9E638 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				CFE730DF26676A1600B9E638 /* ZarinPal.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		CFE730C5266768E500B9E638 /* Sample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sample.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -24,6 +40,7 @@
 		CFE730D1266768E600B9E638 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CFE730D4266768E600B9E638 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CFE730D6266768E600B9E638 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CFE730DC266769EC00B9E638 /* ZarinPal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ZarinPal.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +48,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CFE730DE26676A1600B9E638 /* ZarinPal.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +58,7 @@
 		CFE730BC266768E500B9E638 = {
 			isa = PBXGroup;
 			children = (
+				CFE730DC266769EC00B9E638 /* ZarinPal.framework */,
 				CFE730C7266768E500B9E638 /* Sample */,
 				CFE730C6266768E500B9E638 /* Products */,
 			);
@@ -77,6 +96,7 @@
 				CFE730C1266768E500B9E638 /* Sources */,
 				CFE730C2266768E500B9E638 /* Frameworks */,
 				CFE730C3266768E500B9E638 /* Resources */,
+				CFE730E026676A1600B9E638 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -288,6 +308,10 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = D47RCEDQHZ;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Sample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -297,6 +321,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_WORKSPACE = YES;
 			};
 			name = Debug;
 		};
@@ -307,6 +332,10 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = D47RCEDQHZ;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Sample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -316,6 +345,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_WORKSPACE = YES;
 			};
 			name = Release;
 		};

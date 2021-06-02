@@ -52,6 +52,12 @@ Create payment request:
 ```Swift
   let request = Request.asPaymentRequest(merchantID: "your merchant id", amount: 1010, callbackURL: "https://www.google.com", description: "your descaription for payment")
 ```
+Or
+
+Maybe You got `Authority` from your server, here You must use `Request.asAuthority()`
+```Swift
+    val request = Request.asAuthority("AUTHORITY")
+```   
 
 ###### Step 3
 

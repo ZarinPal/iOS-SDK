@@ -5,7 +5,7 @@ ZarinPal Purchase SDK Provides payment methods on your iOS Application.
 
 
 <p align="center" width="100%">
-<img src="https://github.com/ZarinPal-Lab/Android-PaymentGateway-SDK/blob/master/logo%20%E2%80%93%201.png?raw=true" alt="sample" width="300" height="100"/>
+<img src="https://github.com/ZarinPal-Lab/Android-PaymentGateway-SDK/blob/master/logo%20%E2%80%93%201.png?raw=true" alt="ZarinPal Logo" width="300" height="100"/>
 </p>
 
 
@@ -110,3 +110,9 @@ class ViewController: UIViewController,PaymentCallback {
 
 
 ```
+Don't forget choose embed & sign ZarinPal framework:
+
+<p align="center" width="100%">
+<img src="https://raw.githubusercontent.com/ZarinPal/iOS-SDK/main/Sample/Art/ScreenShot-embed-sign.png" alt="sample" width="600" height="200"/>
+</p>
+

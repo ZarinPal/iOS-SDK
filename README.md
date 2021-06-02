@@ -28,6 +28,26 @@ import ZarinPal
 
 ###### Step 2
 
+For `start` purchase you need a `Request` instance, `Request` has two type of Payment:
+
+*   as **Payment Request** by `Request.asPaymentRequest()`
+*   as **Authority ID** by `Request.asAuthority()`
+
+If you would create payment Authority on Client, You must use `Request.asPayementRequest()`, this method needs below parameters:
+
+**Require Parameters:**
+
+*   Merchant id: An unique ID of your business payment gateway.
+*   Amount: Amount of Purchase.
+*   Callback URL: A valid `URI` or `URL` Address for sending result purchase.
+*   Description: A Content for showing payer.
+
+**Optional Parameters:**
+
+*   Mobile: Valid Mobile number of payer.
+*   Email: Valid Email Address of payer.
+
+
 Create payment request:
 ```Swift
   let request = Request.asPaymentRequest(merchantID: "your merchant id", amount: 1010, callbackURL: "https://www.google.com", description: "your descaription for payment")

@@ -15,26 +15,25 @@ ZarinPal Purchase SDK Provides payment methods on your iOS Application.
 - Xcode 12+
 - Swift 5.1+
 
-#Installation
+# Installation
 
 Download and add ZarinPal framework in to project(can download release tags).
 
-#How to use
-
-Step 1
+# How to use
+###### Step 1
 
 ```Swift
 import ZarinPal
 ```
 
-Step 2
+###### Step 2
 
 Create payment request:
 ```Swift
   let request = Request.asPaymentRequest(merchantID: "your merchant id", amount: 1010, callbackURL: "https://www.google.com", description: "your descaription for payment")
 ```
 
-Step 3
+###### Step 3
 
 Add payment protocol in your viewController also add methods:
 
@@ -61,7 +60,7 @@ class MyViewController: UIViewController,PaymentCallback {
 }
 ```
 
-Step 4
+###### Step 4
 
 Create ZarinPal Class and pass payment request and callback:
 
@@ -69,8 +68,6 @@ Create ZarinPal Class and pass payment request and callback:
       let zarinPal = ZarinPal()
       zarinPal.start(request: request, callback: self,vc: self)
 ```
-
-## DONE
 
 Complete sample code:
 

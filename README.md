@@ -76,8 +76,6 @@ import UIKit
 import ZarinPal
 
 class ViewController: UIViewController,PaymentCallback {
-
-    @IBOutlet weak var label: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -86,7 +84,7 @@ class ViewController: UIViewController,PaymentCallback {
 
     @IBAction func btn(_ sender: Any) {
                 
-       let request = Request.asPaymentRequest(merchantID: "your merchant id", amount: 1010, callbackURL: "https://www.google.com", description: "your descaription for payment")
+      let request = Request.asPaymentRequest(merchantID: "your merchant id", amount: 1010, callbackURL: "https://www.google.com", description: "your descaription for payment")
       let zarinPal = ZarinPal()
       zarinPal.start(request: request, callback: self,vc: self)
 

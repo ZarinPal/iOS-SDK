@@ -15,6 +15,7 @@
 		CFE730D5266768E600B9E638 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFE730D3266768E600B9E638 /* LaunchScreen.storyboard */; };
 		CFE730DE26676A1600B9E638 /* ZarinPal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFE730DC266769EC00B9E638 /* ZarinPal.framework */; };
 		CFE730DF26676A1600B9E638 /* ZarinPal.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CFE730DC266769EC00B9E638 /* ZarinPal.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CFE730E326676CA600B9E638 /* ScreenShot-embed-sign.png in Resources */ = {isa = PBXBuildFile; fileRef = CFE730E226676CA600B9E638 /* ScreenShot-embed-sign.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -41,6 +42,7 @@
 		CFE730D4266768E600B9E638 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CFE730D6266768E600B9E638 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CFE730DC266769EC00B9E638 /* ZarinPal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ZarinPal.framework; sourceTree = "<group>"; };
+		CFE730E226676CA600B9E638 /* ScreenShot-embed-sign.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ScreenShot-embed-sign.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 		CFE730BC266768E500B9E638 = {
 			isa = PBXGroup;
 			children = (
+				CFE730E126676C8D00B9E638 /* Art */,
 				CFE730DC266769EC00B9E638 /* ZarinPal.framework */,
 				CFE730C7266768E500B9E638 /* Sample */,
 				CFE730C6266768E500B9E638 /* Products */,
@@ -84,6 +87,14 @@
 				CFE730D6266768E600B9E638 /* Info.plist */,
 			);
 			path = Sample;
+			sourceTree = "<group>";
+		};
+		CFE730E126676C8D00B9E638 /* Art */ = {
+			isa = PBXGroup;
+			children = (
+				CFE730E226676CA600B9E638 /* ScreenShot-embed-sign.png */,
+			);
+			path = Art;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -147,6 +158,7 @@
 				CFE730D5266768E600B9E638 /* LaunchScreen.storyboard in Resources */,
 				CFE730D2266768E600B9E638 /* Assets.xcassets in Resources */,
 				CFE730D0266768E500B9E638 /* Main.storyboard in Resources */,
+				CFE730E326676CA600B9E638 /* ScreenShot-embed-sign.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

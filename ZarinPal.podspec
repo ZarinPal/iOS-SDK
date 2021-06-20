@@ -16,7 +16,7 @@ Copyright 2021 - present ZarinPal. All rights reserved.
 LICENSE
 }
 s.author       = { 'Farshid Roohi' => 'farshid.roohi.a@gmail.com' }
-s.source = { :http => 'https://github.com/ZarinPal/iOS-SDK/releases/download/#{s.version}/ZarinPalFramework.zip' }
+s.source = { :http => "https://github.com/ZarinPal/iOS-SDK/releases/download/#{s.version}/ZarinPalFramework.zip" }
 
 s.platform = :ios
 s.ios.deployment_target = '11.0'

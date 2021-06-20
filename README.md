@@ -151,9 +151,3 @@ class ViewController: UIViewController,PaymentCallback {
 
 
 ```
-Don't forget choose embed & sign ZarinPal framework:
-
-<p align="center" width="100%">
-<img src="https://raw.githubusercontent.com/ZarinPal/iOS-SDK/main/Sample/Art/ScreenShot-embed-sign.png" alt="sample" width="600" height="200"/>
-</p>
-

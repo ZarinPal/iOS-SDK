@@ -17,13 +17,30 @@ ZarinPal Purchase SDK Provides payment methods on your iOS Application.
 
 # Installation
 
-Download and add ZarinPal framework in to project(can download release tags).
+CocoaPods:
+
+Create Podfile and add ```pod 'ZarinPal'```:
+
+```
+use_frameworks!
+
+target 'YourApp' do
+    pod 'ZarinPal', '~> 1.1.4'
+end
+```
+
+Install pods:
+
+```
+install pod
+```
 
 # How to use
 ###### Step 1
 
 ```Swift
 import ZarinPal
+
 ```
 
 ###### Step 2

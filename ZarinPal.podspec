@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 s.name         = 'ZarinPal'
 s.module_name  = 'ZarinPal'
-s.version      = '1.0.3'
+s.version      = '1.0.4'
 s.summary      = 'ZarinPal In App Billing - Purchase SDK | MPG'
 s.description  = <<-DESC
 ZarinPal Purchase SDK Provides payment methods on your iOS Application.
@@ -16,11 +16,11 @@ Copyright 2021 - present ZarinPal. All rights reserved.
 LICENSE
 }
 s.author       = { 'Farshid Roohi' => 'farshid.roohi.a@gmail.com' }
-s.source = { :http => 'https://github.com/ZarinPal/iOS-SDK/releases/download/1.0.3/ZarinPalFramework.zip' }
+s.source = { :http => 'https://github.com/ZarinPal/iOS-SDK/releases/download/#{s.version}/ZarinPalFramework.zip' }
 
 s.platform = :ios
 s.ios.deployment_target = '11.0'
 
-s.frameworks = 'SocketIO', 'Starscream'
+s.frameworks = 'Starscream'
 s.vendored_frameworks  = 'ZarinPal.framework'
 end

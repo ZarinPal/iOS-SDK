@@ -8,7 +8,7 @@
 import UIKit
 import ZarinPal
 
-class ViewController: UIViewController,PaymentCallback {
+class ViewController: UIViewController,PaymentDelegate {
     
     #warning("Please get your merchant id from ZarinPal panel(https://next.zarinpal.com/panel/dashboard)")
     let merchantID = "your merchant id"
@@ -22,10 +22,15 @@ class ViewController: UIViewController,PaymentCallback {
     @IBAction func btnPay(_ sender: Any) {
         
         
-        let request = Request.asPaymentRequest(merchantID: self.merchantID, amount: 1000, callbackURL: "https://www.google.com", description: "your descaription for payment")
+        let purchase = Purchase.asPaymentRequest(merchantID: self.merchantID, amount: 1010, callbackURL: "https://www.google.com", description: "تست توضیحات")
         
-        let zarinPal = ZarinPal()
-        zarinPal.start(request: request, callback: self,vc: self)
+   // let purchase = Purchase.asSku(id: "377443")
+      
+      let zarinPal = ZarinPalBillingClient.newBuilder(viewController: self)
+          .setDelegate(self)
+          .build()
+   
+      zarinPal.purchase(purchase: purchase)
     }
     
     func didClose() {

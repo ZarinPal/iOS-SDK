@@ -19,13 +19,14 @@ ZarinPal Purchase SDK Provides payment methods on your iOS Application.
 
 CocoaPods:
 
-Create Podfile and add ```pod 'ZarinPal'```:
+Create Podfile and add ```pod 'ZarinPal'``` and ```ZarinPal_MPG```:
 
 ```
 use_frameworks!
 
 target 'YourApp' do
-    pod 'ZarinPal', '~> 1.1.4'
+     pod 'ZarinPal', '~> 1.1.7'
+     pod 'ZarinPal_MPG', '~> 1.1.7'
 end
 ```
 
@@ -45,12 +46,13 @@ import ZarinPal
 
 ###### Step 2
 
-For `start` purchase you need a `Request` instance, `Request` has two type of Payment:
+For `purchase` you need a `ZarinPalBillingClient` instance, `newBuilder` has two type of Payment:
 
-*   as **Payment Request** by `Request.asPaymentRequest()`
-*   as **Authority ID** by `Request.asAuthority()`
+*   as **Payment Request** by `Purchase.asPaymentRequest()`
+*   as **Authority ID** by `Purchase.asAuthority()`
+*   as **SKU** by `Purchase.asSku()`
 
-If you would create payment Authority on Client, You must use `Request.asPayementRequest()`, this method needs below parameters:
+If you would create payment Authority on Client, You must use `Purchase.asPayementRequest()`, this method needs below parameters:
 
 **Require Parameters:**
 
@@ -67,21 +69,21 @@ If you would create payment Authority on Client, You must use `Request.asPayemen
 
 Create payment request:
 ```Swift
-  let request = Request.asPaymentRequest(merchantID: "your merchant id", amount: 1010, callbackURL: "https://www.google.com", description: "your descaription for payment")
+  let request = Purchase.asPaymentRequest(merchantID: "your merchant id", amount: 1010, callbackURL: "https://www.google.com", description: "your descaription for payment")
 ```
 Or
 
-Maybe You got `Authority` from your server, here You must use `Request.asAuthority()`
+Maybe You got `Authority` from your server, here You must use `Purchase.asAuthority()`
 ```Swift
-    val request = Request.asAuthority("AUTHORITY")
+    let purchase = Purchase.asAuthority("AUTHORITY")
 ```   
 
 ###### Step 3
 
-Add payment protocol in your viewController also add methods:
+Add payment delegate in your viewController also add methods:
 
 ```Swift
-class MyViewController: UIViewController,PaymentCallback {
+class MyViewController: UIViewController,PaymentDelegate {
 
       override func viewDidLoad() {
         super.viewDidLoad()
@@ -105,11 +107,16 @@ class MyViewController: UIViewController,PaymentCallback {
 
 ###### Step 4
 
-Create ZarinPal Class and pass payment request and callback:
+Create ZarinPal Class and pass payment request and delegate:
 
 ```Swift
-      let zarinPal = ZarinPal()
-      zarinPal.start(request: request, callback: self,vc: self)
+     let zarinPal = ZarinPalBillingClient.newBuilder(viewController: self)
+            .setDelegate(self)
+            .build()
+            
+     let purchase = Purchase.asSku(id: "377443")
+        
+     zarinPal.purchase(purchase: purchase)
 ```
 
 Complete sample code:
@@ -118,7 +125,7 @@ Complete sample code:
 import UIKit
 import ZarinPal
 
-class ViewController: UIViewController,PaymentCallback {
+class ViewController: UIViewController,PaymentDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -127,9 +134,15 @@ class ViewController: UIViewController,PaymentCallback {
 
     @IBAction func btn(_ sender: Any) {
                 
-      let request = Request.asPaymentRequest(merchantID: "your merchant id", amount: 1010, callbackURL: "https://www.google.com", description: "your descaription for payment")
-      let zarinPal = ZarinPal()
-      zarinPal.start(request: request, callback: self,vc: self)
+            let purchase = Purchase.asPaymentRequest(merchantID: "610c1652-bec2-4d70-a946-c818d199cd97", amount: 1010, callbackURL: "https://www.google.com", description: "تست توضیحات")
+          
+     // let purchase = Purchase.asSku(id: "377443")
+        
+        let zarinPal = ZarinPalBillingClient.newBuilder(viewController: self)
+            .setDelegate(self)
+            .build()
+     
+        zarinPal.purchase(purchase: purchase)
 
     }
     
@@ -151,3 +164,29 @@ class ViewController: UIViewController,PaymentCallback {
 
 
 ```
+
+
+And you can get user last purchaes with call query for mobile, cardpan and user email:
+
+```Swift
+        let skus = ["377443"]
+        
+        let skuParams = SkuQueryParams.newBuilder(merchantID: "9b4e73dd-a1d8-430f-a725-3c84d6c65d2e")
+            .setSkuList(skus)
+            .orderByMobile("09355106005")
+            .orderByCardPan("5022291062009996")
+            .build()
+        
+        let zarinPal = ZarinPalBillingClient.newBuilder(viewController: self)
+            .setDelegate(self)
+            .build()
+        
+        zarinPal.querySkuPurchased(query: skuParams) { purchase in
+            purchase?.forEach({ skuPurchased in
+                print(skuPurchased.authority)
+            })
+            
+        }
+
+```
+

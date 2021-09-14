@@ -183,7 +183,7 @@ class ViewController: UIViewController,PaymentDelegate {
 And you can get user last purchaes with call query for mobile, cardpan and user email:
 
 ```Swift
-        let skus = ["377443"]
+        let skus = ["PRODUCT ID"]
         
         let skuParams = SkuQueryParams.newBuilder(merchantID: "MERCHANT CODE")
             .setSkuList(skus)

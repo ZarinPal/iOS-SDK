@@ -185,10 +185,10 @@ And you can get user last purchaes with call query for mobile, cardpan and user 
 ```Swift
         let skus = ["377443"]
         
-        let skuParams = SkuQueryParams.newBuilder(merchantID: "9b4e73dd-a1d8-430f-a725-3c84d6c65d2e")
+        let skuParams = SkuQueryParams.newBuilder(merchantID: "MERCHANT CODE")
             .setSkuList(skus)
-            .orderByMobile("09355106005")
-            .orderByCardPan("5022291062009996")
+            .orderByMobile("MOBILE")
+            .orderByCardPan("CARD PAN")
             .build()
         
         let zarinPal = ZarinPalBillingClient.newBuilder(viewController: self)

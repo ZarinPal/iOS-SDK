@@ -12,7 +12,7 @@ class ViewController: UIViewController,PaymentDelegate {
     
     #warning("Please get your merchant id from ZarinPal panel(https://next.zarinpal.com/panel/dashboard)")
     let merchantID = "your merchant id"
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,15 +22,22 @@ class ViewController: UIViewController,PaymentDelegate {
     @IBAction func btnPay(_ sender: Any) {
         
         
-        let purchase = Purchase.asPaymentRequest(merchantID: self.merchantID, amount: 1010, callbackURL: "https://www.google.com", description: "تست توضیحات")
+        //        let purchase = Purchase.newBuilder()
+        //            .asPaymentRequest(merchantID: self.merchantID, amount: 1010, callbackURL: "https://www.google.com", description: "تست توضیحات")
+        //            .setType(type: .SHETAB)
+        //            .build()
         
-   // let purchase = Purchase.asSku(id: "377443")
-      
-      let zarinPal = ZarinPalBillingClient.newBuilder(viewController: self)
-          .setDelegate(self)
-          .build()
-   
-      zarinPal.purchase(purchase: purchase)
+        let purchase = Purchase.newBuilder()
+            .asSku(id: "377443")
+            .setType(type: .SHETAB)
+            .build()
+        
+        
+        let zarinPal = ZarinPalBillingClient.newBuilder(viewController: self)
+            .setDelegate(self)
+            .build()
+        
+        zarinPal.launchBillingFlow(purchase: purchase)
     }
     
     func didClose() {
@@ -41,8 +48,8 @@ class ViewController: UIViewController,PaymentDelegate {
         print("exception : \(exception.description)")
     }
     
-    func didReceive(receipt: ReceiptShaparak, raw: String) {
-        print("receipt : \(receipt)")
+    func didReceive(receipt: [String:Any]?, raw: String?) {
+        print("receipt : \(String(describing: receipt)) | raw : \(String(describing: raw)) ")
     }
     
 }

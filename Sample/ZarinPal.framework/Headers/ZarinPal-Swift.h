@@ -247,6 +247,15 @@ SWIFT_CLASS("_TtC8ZarinPal12NativeEngine") SWIFT_AVAILABILITY(tvos,introduced=13
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
+@class NSException;
+
+SWIFT_PROTOCOL_NAMED("PaymentDelegate")
+@protocol NotificationsItem
+- (void)didReceiveWithReceipt:(NSDictionary<NSString *, id> * _Nullable)receipt raw:(NSString * _Nullable)raw;
+- (void)didExceptionWithException:(NSException * _Nonnull)exception;
+- (void)didClose;
+@end
+
 
 
 

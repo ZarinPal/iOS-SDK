@@ -196,7 +196,7 @@ open class WebSocket : ZarinPal.WebSocketClient, ZarinPal.EngineDelegate {
 }
 @_hasMissingDesignatedInitializers public class ZarinPalBillingClient {
   public static func newBuilder(viewController: UIKit.UIViewController) -> ZarinPal.ZarinPalBillingClient.Builder
-  public func purchase(purchase: ZarinPal.Purchase)
+  public func launchBillingFlow(purchase: ZarinPal.Purchase)
   public func querySkuPurchased(query: ZarinPal.SkuQueryParams, completion: @escaping ([ZarinPal.SkuPurchased]?) -> Swift.Void)
   @_hasMissingDesignatedInitializers public class Builder {
     public func setDelegate(_ delegate: ZarinPal.PaymentDelegate) -> ZarinPal.ZarinPalBillingClient.Builder
@@ -232,20 +232,19 @@ public class WSCompression : ZarinPal.CompressionHandler {
     public func orderByEmail(_ value: Swift.String) -> ZarinPal.SkuQueryParams.Builder
     public func orderByCardPan(_ value: Swift.String) -> ZarinPal.SkuQueryParams.Builder
     public func setSkuList(_ values: [Swift.String]) -> ZarinPal.SkuQueryParams.Builder
-    public func setSkuType(_ value: ZarinPal.SkuType) -> ZarinPal.SkuQueryParams.Builder
     public func merchantID() -> Swift.String?
     public func orderByMobile() -> Swift.String?
     public func orderByEmail() -> Swift.String?
     public func orderByCardPan() -> Swift.String?
     public func skuList() -> [Swift.String]?
-    public func setSkuType() -> ZarinPal.SkuType?
     public func build() -> ZarinPal.SkuQueryParams
     @objc deinit
   }
   @objc deinit
 }
-public enum SkuType : Swift.String, Swift.Codable {
-  case IN_APP
+public enum PurchaseType : Swift.String, Swift.Codable {
+  case ALL
+  case SHETAB
   public init?(rawValue: Swift.String)
   public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
@@ -319,10 +318,17 @@ extension URL {
 }
 @_hasMissingDesignatedInitializers public class Purchase {
   public var purchase: ZarinPal.Purchase?
-  public static func asPaymentRequest(merchantID: Swift.String, amount: Swift.Int64, callbackURL: Swift.String, description: Swift.String, mobile: Swift.String, email: Swift.String) -> ZarinPal.DirectlyPurchase
-  public static func asPaymentRequest(merchantID: Swift.String, amount: Swift.Int64, callbackURL: Swift.String, description: Swift.String) -> ZarinPal.DirectlyPurchase
-  public static func asAuthority(authority: Swift.String) -> ZarinPal.AuthorityPurchase
-  public static func asSku(id: Swift.String) -> ZarinPal.SKUPurchase
+  public var purchaseType: ZarinPal.PurchaseType
+  public static func newBuilder() -> ZarinPal.Purchase.Builder
+  @_hasMissingDesignatedInitializers public class Builder {
+    public func asPaymentRequest(merchantID: Swift.String, amount: Swift.Int64, callbackURL: Swift.String, description: Swift.String, mobile: Swift.String, email: Swift.String) -> ZarinPal.Purchase.Builder
+    public func asPaymentRequest(merchantID: Swift.String, amount: Swift.Int64, callbackURL: Swift.String, description: Swift.String) -> ZarinPal.Purchase.Builder
+    public func asAuthority(authority: Swift.String) -> ZarinPal.Purchase.Builder
+    public func asSku(id: Swift.String) -> ZarinPal.Purchase.Builder
+    public func setType(type: ZarinPal.PurchaseType) -> ZarinPal.Purchase.Builder
+    public func build() -> ZarinPal.Purchase
+    @objc deinit
+  }
   @objc deinit
 }
 @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class AuthorityPurchase : ZarinPal.Purchase {
@@ -385,10 +391,10 @@ public class StringHTTPHandler : ZarinPal.HTTPHandler {
   public func register(delegate: ZarinPal.HTTPHandlerDelegate)
   @objc deinit
 }
-public protocol PaymentDelegate {
-  func didReceive(receipt: ZarinPal.ReceiptShaparak, raw: Swift.String)
-  func didException(exception: Foundation.NSException)
-  func didClose()
+@objc(NotificationsItem) public protocol PaymentDelegate {
+  @objc func didReceive(receipt: [Swift.String : Any]?, raw: Swift.String?)
+  @objc func didException(exception: Foundation.NSException)
+  @objc func didClose()
 }
 @objc @_inheritsConvenienceInitializers public class CustomUIView : UIKit.UIView {
   @objc override dynamic public init(frame: CoreGraphics.CGRect)
@@ -450,21 +456,32 @@ public struct SkuPurchased : Swift.Codable {
   public func encode(to encoder: Swift.Encoder) throws
   public init(from decoder: Swift.Decoder) throws
 }
-public struct ReceiptShaparak : Swift.Codable {
+public struct Receipt : Swift.Codable {
+  public var status: Swift.String?
+  public var amount: Swift.Int64?
+  public var description: Swift.String?
+  public var date: Swift.String?
+  public var message: Swift.String?
+  public var provider: Swift.String?
+  public var redirect_url: Swift.String?
+  public var ref_id: Swift.Int64?
+  public var receipt: ZarinPal.ReceiptUser?
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct ReceiptShaparakNotOk : Swift.Codable {
   public var status: Swift.String
   public var amount: Swift.Int64
   public var description: Swift.String
   public var date: Swift.String
   public var message: Swift.String
-  public var provider: Swift.String?
-  public var redirect_url: Swift.String?
   public var ref_id: Swift.Int64
-  public var receipt: ZarinPal.Receipt
+  public var receipt: ZarinPal.ReceiptUser?
   public func encode(to encoder: Swift.Encoder) throws
   public init(from decoder: Swift.Decoder) throws
 }
-public struct Receipt : Swift.Codable {
-  public var user: ZarinPal.User
+public struct ReceiptUser : Swift.Codable {
+  public var user: ZarinPal.User?
   public func encode(to encoder: Swift.Encoder) throws
   public init(from decoder: Swift.Decoder) throws
 }

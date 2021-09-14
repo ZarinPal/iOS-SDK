@@ -38,10 +38,10 @@ public enum FoundationTransportError : Swift.Error {
   @objc required dynamic public init?(coder: Foundation.NSCoder)
   @objc deinit
 }
-public protocol PaymentDelegate {
-  func didReceive(receipt: ZarinPal_MPG.ReceiptShaparak, raw: Swift.String)
-  func didException(exception: Foundation.NSException)
-  func didClose()
+@objc(NotificationsItem) public protocol PaymentDelegate {
+  @objc func didReceive(receipt: [Swift.String : Any]?, raw: Swift.String?)
+  @objc func didException(exception: Foundation.NSException)
+  @objc func didClose()
 }
 public class WSEngine : ZarinPal_MPG.Engine, ZarinPal_MPG.TransportEventClient, ZarinPal_MPG.FramerEventClient, ZarinPal_MPG.FrameCollectorDelegate, ZarinPal_MPG.HTTPHandlerDelegate {
   public var respondToPingWithPong: Swift.Bool
@@ -66,20 +66,19 @@ public class WSEngine : ZarinPal_MPG.Engine, ZarinPal_MPG.TransportEventClient, 
     public func orderByEmail(_ value: Swift.String) -> ZarinPal_MPG.SkuQueryParams.Builder
     public func orderByCardPan(_ value: Swift.String) -> ZarinPal_MPG.SkuQueryParams.Builder
     public func setSkuList(_ values: [Swift.String]) -> ZarinPal_MPG.SkuQueryParams.Builder
-    public func setSkuType(_ value: ZarinPal_MPG.SkuType) -> ZarinPal_MPG.SkuQueryParams.Builder
     public func merchantID() -> Swift.String?
     public func orderByMobile() -> Swift.String?
     public func orderByEmail() -> Swift.String?
     public func orderByCardPan() -> Swift.String?
     public func skuList() -> [Swift.String]?
-    public func setSkuType() -> ZarinPal_MPG.SkuType?
     public func build() -> ZarinPal_MPG.SkuQueryParams
     @objc deinit
   }
   @objc deinit
 }
-public enum SkuType : Swift.String, Swift.Codable {
-  case IN_APP
+public enum PurchaseType : Swift.String, Swift.Codable {
+  case ALL
+  case SHETAB
   public init?(rawValue: Swift.String)
   public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
@@ -226,10 +225,17 @@ extension FoundationSecurity : ZarinPal_MPG.HeaderValidator {
 }
 @_hasMissingDesignatedInitializers public class Purchase {
   public var purchase: ZarinPal_MPG.Purchase?
-  public static func asPaymentRequest(merchantID: Swift.String, amount: Swift.Int64, callbackURL: Swift.String, description: Swift.String, mobile: Swift.String, email: Swift.String) -> ZarinPal_MPG.DirectlyPurchase
-  public static func asPaymentRequest(merchantID: Swift.String, amount: Swift.Int64, callbackURL: Swift.String, description: Swift.String) -> ZarinPal_MPG.DirectlyPurchase
-  public static func asAuthority(authority: Swift.String) -> ZarinPal_MPG.AuthorityPurchase
-  public static func asSku(id: Swift.String) -> ZarinPal_MPG.SKUPurchase
+  public var purchaseType: ZarinPal_MPG.PurchaseType
+  public static func newBuilder() -> ZarinPal_MPG.Purchase.Builder
+  @_hasMissingDesignatedInitializers public class Builder {
+    public func asPaymentRequest(merchantID: Swift.String, amount: Swift.Int64, callbackURL: Swift.String, description: Swift.String, mobile: Swift.String, email: Swift.String) -> ZarinPal_MPG.Purchase.Builder
+    public func asPaymentRequest(merchantID: Swift.String, amount: Swift.Int64, callbackURL: Swift.String, description: Swift.String) -> ZarinPal_MPG.Purchase.Builder
+    public func asAuthority(authority: Swift.String) -> ZarinPal_MPG.Purchase.Builder
+    public func asSku(id: Swift.String) -> ZarinPal_MPG.Purchase.Builder
+    public func setType(type: ZarinPal_MPG.PurchaseType) -> ZarinPal_MPG.Purchase.Builder
+    public func build() -> ZarinPal_MPG.Purchase
+    @objc deinit
+  }
   @objc deinit
 }
 @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class AuthorityPurchase : ZarinPal_MPG.Purchase {
@@ -490,21 +496,32 @@ public enum ServerEvent {
 public protocol Server {
   func start(address: Swift.String, port: Swift.UInt16) -> Swift.Error?
 }
-public struct ReceiptShaparak : Swift.Codable {
+public struct Receipt : Swift.Codable {
+  public var status: Swift.String?
+  public var amount: Swift.Int64?
+  public var description: Swift.String?
+  public var date: Swift.String?
+  public var message: Swift.String?
+  public var provider: Swift.String?
+  public var redirect_url: Swift.String?
+  public var ref_id: Swift.Int64?
+  public var receipt: ZarinPal_MPG.ReceiptUser?
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct ReceiptShaparakNotOk : Swift.Codable {
   public var status: Swift.String
   public var amount: Swift.Int64
   public var description: Swift.String
   public var date: Swift.String
   public var message: Swift.String
-  public var provider: Swift.String?
-  public var redirect_url: Swift.String?
   public var ref_id: Swift.Int64
-  public var receipt: ZarinPal_MPG.Receipt
+  public var receipt: ZarinPal_MPG.ReceiptUser?
   public func encode(to encoder: Swift.Encoder) throws
   public init(from decoder: Swift.Decoder) throws
 }
-public struct Receipt : Swift.Codable {
-  public var user: ZarinPal_MPG.User
+public struct ReceiptUser : Swift.Codable {
+  public var user: ZarinPal_MPG.User?
   public func encode(to encoder: Swift.Encoder) throws
   public init(from decoder: Swift.Decoder) throws
 }

@@ -25,8 +25,8 @@ Create Podfile and add ```pod 'ZarinPal'``` and ```ZarinPal_MPG```:
 use_frameworks!
 
 target 'YourApp' do
-     pod 'ZarinPal', '~> 1.1.7'
-     pod 'ZarinPal_MPG', '~> 1.1.7'
+     pod 'ZarinPal', '~> 1.1.8'
+     pod 'ZarinPal_MPG', '~> 1.1.8'
 end
 ```
 
@@ -48,11 +48,11 @@ import ZarinPal
 
 For `purchase` you need a `ZarinPalBillingClient` instance, `newBuilder` has two type of Payment:
 
-*   as **Payment Request** by `Purchase.asPaymentRequest()`
-*   as **Authority ID** by `Purchase.asAuthority()`
-*   as **SKU** by `Purchase.asSku()`
+*   as **Payment Request** by `Purchase.newBuilder().asPaymentRequest()`
+*   as **Authority ID** by `Purchase.newBuilder().asAuthority()`
+*   as **SKU** by `Purchase.newBuilder().asSku()`
 
-If you would create payment Authority on Client, You must use `Purchase.asPayementRequest()`, this method needs below parameters:
+If you would create payment Authority on Client, You must use `Purchase.newBuilder().asPayementRequest()`, this method needs below parameters:
 
 **Require Parameters:**
 
@@ -69,13 +69,18 @@ If you would create payment Authority on Client, You must use `Purchase.asPayeme
 
 Create payment request:
 ```Swift
-  let request = Purchase.asPaymentRequest(merchantID: "your merchant id", amount: 1010, callbackURL: "https://www.google.com", description: "your descaription for payment")
+  let purchase = Purchase.newBuilder()
+                    .asPaymentRequest(merchantID: "YOUR MERCHANT ID", amount: 10000, callbackURL: "https://www.google.com", description: "Test Description for this payment")
+                    .setType(type: .SHETAB) // or .ALL
+                    .build()
 ```
 Or
 
-Maybe You got `Authority` from your server, here You must use `Purchase.asAuthority()`
+Maybe You got `Authority` from your server, here You must use `Purchase.newBuilder().asAuthority()`
 ```Swift
-    let purchase = Purchase.asAuthority("AUTHORITY")
+    let purchase = Purchase.newBuilder()
+    .asAuthority("AUTHORITY")
+    .build()
 ```   
 
 ###### Step 3
@@ -99,8 +104,8 @@ class MyViewController: UIViewController,PaymentDelegate {
           print("exception : \(exception.description)")
       }
       
-      func didReceive(receipt: ReceiptShaparak, raw: String) {
-          print("receipt : \(receipt)")
+      func didReceive(receipt: [String:Any]?, raw: String?) {
+          print("receipt : \(String(describing: receipt)) | raw : \(String(describing: raw)) ")
       }
 }
 ```
@@ -114,9 +119,12 @@ Create ZarinPal Class and pass payment request and delegate:
             .setDelegate(self)
             .build()
             
-     let purchase = Purchase.asSku(id: "377443")
+      let purchase = Purchase.newBuilder()
+            .asSku(id: "YOUR PRODUCT ID")
+            .setType(type: .SHETAB)
+            .build()
         
-     zarinPal.purchase(purchase: purchase)
+     zarinPal.launchBillingFlow(purchase: purchase)
 ```
 
 Complete sample code:
@@ -134,15 +142,21 @@ class ViewController: UIViewController,PaymentDelegate {
 
     @IBAction func btn(_ sender: Any) {
                 
-            let purchase = Purchase.asPaymentRequest(merchantID: "610c1652-bec2-4d70-a946-c818d199cd97", amount: 1010, callbackURL: "https://www.google.com", description: "تست توضیحات")
+          let purchase = Purchase.newBuilder()
+                    .asPaymentRequest(merchantID: "YOUR MERCHANT ID", amount: 10000, callbackURL: "https://www.google.com", description: "Test Description for this payment")
+                    .setType(type: .SHETAB) // or .ALL
+                    .build()
           
-     // let purchase = Purchase.asSku(id: "377443")
+  //let purchase = Purchase.newBuilder()
+  //          .asSku(id: "377443")
+  //          .setType(type: .SHETAB)
+  //          .build()
         
         let zarinPal = ZarinPalBillingClient.newBuilder(viewController: self)
             .setDelegate(self)
             .build()
      
-        zarinPal.purchase(purchase: purchase)
+        zarinPal.launchBillingFlow(purchase: purchase)
 
     }
     
@@ -155,8 +169,8 @@ class ViewController: UIViewController,PaymentDelegate {
           print("exception : \(exception.description)")
       }
       
-      func didReceive(receipt: ReceiptShaparak, raw: String) {
-          print("receipt : \(receipt)")
+      func didReceive(receipt: [String:Any]?, raw: String?) {
+        print("receipt : \(String(describing: receipt)) | raw : \(String(describing: raw)) ")
       }
 
     

@@ -1,4 +1,0 @@
-framework module ZarinPal {
-  header "ZarinPal-Swift.h"
-  requires objc
-}

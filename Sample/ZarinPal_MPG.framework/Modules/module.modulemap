@@ -1,4 +1,0 @@
-framework module ZarinPal_MPG {
-  header "ZarinPal_MPG-Swift.h"
-  requires objc
-}

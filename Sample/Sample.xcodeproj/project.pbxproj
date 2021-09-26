@@ -3,14 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CFDCC07F26DE5B940029CEFC /* ZarinPal_MPG.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFDCC07B26DE5B480029CEFC /* ZarinPal_MPG.framework */; };
-		CFDCC08026DE5B940029CEFC /* ZarinPal_MPG.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CFDCC07B26DE5B480029CEFC /* ZarinPal_MPG.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		CFDCC08126DE5B950029CEFC /* ZarinPal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFDCC07D26DE5B4B0029CEFC /* ZarinPal.framework */; };
-		CFDCC08226DE5B950029CEFC /* ZarinPal.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CFDCC07D26DE5B4B0029CEFC /* ZarinPal.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1C0FC749CC005ED141E2AF87 /* Pods_Sample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BE314C7D31F3226A70D468A /* Pods_Sample.framework */; };
 		CFE730C9266768E500B9E638 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE730C8266768E500B9E638 /* AppDelegate.swift */; };
 		CFE730CB266768E500B9E638 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE730CA266768E500B9E638 /* SceneDelegate.swift */; };
 		CFE730CD266768E500B9E638 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE730CC266768E500B9E638 /* ViewController.swift */; };
@@ -26,8 +23,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				CFDCC08026DE5B940029CEFC /* ZarinPal_MPG.framework in Embed Frameworks */,
-				CFDCC08226DE5B950029CEFC /* ZarinPal.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -35,8 +30,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		CFDCC07B26DE5B480029CEFC /* ZarinPal_MPG.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ZarinPal_MPG.framework; sourceTree = "<group>"; };
-		CFDCC07D26DE5B4B0029CEFC /* ZarinPal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ZarinPal.framework; sourceTree = "<group>"; };
+		7BE314C7D31F3226A70D468A /* Pods_Sample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Sample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8815A35B824FD0C10DBC0724 /* Pods-Sample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sample.release.xcconfig"; path = "Target Support Files/Pods-Sample/Pods-Sample.release.xcconfig"; sourceTree = "<group>"; };
+		B925F83F4050258DF1E76D4C /* Pods-Sample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sample.debug.xcconfig"; path = "Target Support Files/Pods-Sample/Pods-Sample.debug.xcconfig"; sourceTree = "<group>"; };
 		CFE730C5266768E500B9E638 /* Sample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFE730C8266768E500B9E638 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CFE730CA266768E500B9E638 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -52,21 +48,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CFDCC07F26DE5B940029CEFC /* ZarinPal_MPG.framework in Frameworks */,
-				CFDCC08126DE5B950029CEFC /* ZarinPal.framework in Frameworks */,
+				1C0FC749CC005ED141E2AF87 /* Pods_Sample.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CBA0D7B7030A0E1FB1A5BCF1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7BE314C7D31F3226A70D468A /* Pods_Sample.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		CFE730BC266768E500B9E638 = {
 			isa = PBXGroup;
 			children = (
-				CFDCC07D26DE5B4B0029CEFC /* ZarinPal.framework */,
-				CFDCC07B26DE5B480029CEFC /* ZarinPal_MPG.framework */,
 				CFE730C7266768E500B9E638 /* Sample */,
 				CFE730C6266768E500B9E638 /* Products */,
+				D4FF877FD4BC2128F20FB77C /* Pods */,
+				CBA0D7B7030A0E1FB1A5BCF1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -92,6 +95,15 @@
 			path = Sample;
 			sourceTree = "<group>";
 		};
+		D4FF877FD4BC2128F20FB77C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B925F83F4050258DF1E76D4C /* Pods-Sample.debug.xcconfig */,
+				8815A35B824FD0C10DBC0724 /* Pods-Sample.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -99,10 +111,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CFE730D9266768E600B9E638 /* Build configuration list for PBXNativeTarget "Sample" */;
 			buildPhases = (
+				8ABC80CA5BCDD382E1EFF407 /* [CP] Check Pods Manifest.lock */,
 				CFE730C1266768E500B9E638 /* Sources */,
 				CFE730C2266768E500B9E638 /* Frameworks */,
 				CFE730C3266768E500B9E638 /* Resources */,
 				CFE730E026676A1600B9E638 /* Embed Frameworks */,
+				9A2941B2E0004F4D83A9A1D1 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -157,6 +171,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		8ABC80CA5BCDD382E1EFF407 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Sample-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9A2941B2E0004F4D83A9A1D1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Sample/Pods-Sample-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Sample/Pods-Sample-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Sample/Pods-Sample-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CFE730C1266768E500B9E638 /* Sources */ = {
@@ -309,6 +365,7 @@
 		};
 		CFE730DA266768E600B9E638 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B925F83F4050258DF1E76D4C /* Pods-Sample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -319,6 +376,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Sample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -333,6 +391,7 @@
 		};
 		CFE730DB266768E600B9E638 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8815A35B824FD0C10DBC0724 /* Pods-Sample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -343,6 +402,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Sample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

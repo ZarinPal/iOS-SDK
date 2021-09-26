@@ -1,0 +1,254 @@
+[
+  {
+    "key":"603799",
+    "bank": "meli",
+    "name" : "ملی",
+    "logo" : "melli",
+    "backgroundColor" : "#b6b881"
+  },
+  {
+    "key":"589210",
+    "bank":"sepah",
+    "name" : "سپه",
+    "logo" : "sepah",
+    "backgroundColor" : "#e1a440"
+  },
+  {
+    "key":"639599",
+    "bank":"ghavamin",
+    "name" : "قوامین",
+    "logo" : "ghavamin",
+    "backgroundColor" : "#ae2124"
+  },
+  {
+    "key":"627648",
+    "bank":"tosesaderat",
+    "name" : "توسعه صادرات",
+    "logo" : "toseeSaderat",
+    "backgroundColor" : "#8aae6c"
+  },
+  {
+    "key":"207177",
+    "bank":"tosesaderat",
+    "name" : "توسعه صادرات",
+    "logo" : "toseeSaderat",
+    "backgroundColor" : "#8aae6c"
+  },
+  {
+    "key":"502908",
+    "bank":"tosetavon",
+    "name" : "توسعه تعاون",
+    "logo" : "TT",
+    "backgroundColor" : "#988049"
+  },
+  {
+    "key":"627760",
+    "bank":"postbank",
+    "name" : "پست بانک",
+    "logo" : "postBank",
+    "backgroundColor" : "#b19531"
+  },
+  {
+    "key":"505416",
+    "bank":"tourism",
+    "name" : "گردشگری",
+    "logo" : "tourism",
+    "backgroundColor" : "#75a0cc"
+  },
+  {
+    "key":"628023",
+    "bank":"maskan",
+    "name" : "مسکن",
+    "logo" : "maskanaskan",
+    "backgroundColor" : "#4bb45f"
+  },
+  {
+    "key":"603770",
+    "bank":"keshavarzi",
+    "name" : "کشاورزی",
+    "logo" : "keshavarzi",
+    "backgroundColor" : "#e3e8c0"
+  },
+  {
+    "key":"639217",
+    "bank":"keshavarzi",
+    "name" : "کشاورزی",
+    "logo" : "keshavarzi",
+    "backgroundColor" : "#e3e8c0"
+  },
+  {
+    "key":"627961",
+    "bank":"sanatomadan",
+    "name" : "صنعت و معدن",
+    "logo" : "sanatomadan",
+    "backgroundColor" : "#4b6daa"
+  },
+  {
+    "key":"639607",
+    "bank":"sarmaye",
+    "name" : "سرمایه",
+    "logo" : "sarmayeh",
+    "backgroundColor" : "#8978a8"
+  },
+  {
+    "key":"639346",
+    "bank":"sina",
+    "name" : "سینا",
+    "logo" : "sina",
+    "backgroundColor" : "#e2c72e"
+  },
+  {
+    "key":"621986",
+    "bank":"saman",
+    "name" : "سامان",
+    "logo" : "saman",
+    "backgroundColor" : "#c5d5db"
+  },
+  {
+    "key":"627488",
+    "bank":"karafarin",
+    "name" : "کارآفرین",
+    "logo" : "karafarin",
+    "backgroundColor" : "#abb53c"
+  },
+  {
+    "key":"502910",
+    "bank":"karafarin",
+    "name" : "کارآفرین",
+    "logo" : "karafarin",
+    "backgroundColor" : "#abb53c"
+  },
+  {
+    "key":"639347",
+    "bank":"pasargad",
+    "name" : "پاسارگاد",
+    "logo" : "pasargad",
+    "backgroundColor" : "#000000"
+  },
+  {
+    "key":"502229",
+    "bank":"pasargad",
+    "name" : "پاسارگاد",
+    "logo" : "pasargad",
+    "backgroundColor" : "#000000"
+  },
+  {
+    "key":"622106",
+    "bank":"parsian",
+    "name" : "پارسیان",
+    "logo" : "parsian",
+    "backgroundColor" : "#962f2f"
+  },
+  {
+    "key":"639194",
+    "bank":"parsian",
+    "name" : "پارسیان",
+    "logo" : "parsian",
+    "backgroundColor" : "#962f2f"
+  },
+  {
+    "key":"627884",
+    "bank":"parsian",
+    "name" : "پارسیان",
+    "logo" : "parsian",
+    "backgroundColor" : "#962f2f"
+  },
+  {
+    "key":"627412",
+    "bank":"eghtesadnovin",
+    "name" : "اقتصاد نوین",
+    "logo" : "enbank",
+    "backgroundColor" : "#988bbe"
+  },
+  {
+    "key":"589463",
+    "bank":"refah",
+    "name" : "رفاه",
+    "logo" : "refah",
+    "backgroundColor" : "#c7c5c8"
+  },
+  {
+    "key":"627353",
+    "bank":"tejarat",
+    "name" : "تجارت",
+    "logo" : "tejarat",
+    "backgroundColor" : "#6cc7e1"
+  },
+  {
+    "key":"610433",
+    "bank":"melat",
+    "name" : "ملت",
+    "logo" : "mellat",
+    "backgroundColor" : "#"
+  },
+  {
+    "key":"628023",
+    "bank":"melat",
+    "name" : "ملت",
+    "logo" : "mellat",
+    "backgroundColor" : "#eeb8ba"
+  },
+  {
+    "key":"603769",
+    "bank":"saderat",
+    "name" : "صادرات",
+    "logo" : "saderat",
+    "backgroundColor" : "#eeb8ba"
+  },
+  {
+    "key":"502938",
+    "bank":"day",
+    "name" : "دی",
+    "logo" : "day",
+    "backgroundColor" : "#8eb9ca"
+  },
+  {
+    "key":"502806",
+    "bank":"shahr",
+    "name" : "شهر",
+    "logo": "shahr",
+    "backgroundColor" : "#c11b26"
+  },
+  {
+    "key":"636949",
+    "bank":"hekmat",
+    "name" : "حکمت ایرانیان",
+    "logo": "hekmat",
+    "backgroundColor" : "#748cbe"
+  },
+  {
+    "key":"505785",
+    "bank":"iranzamin",
+    "name" : "ایران زمین",
+    "logo": "iranZamin",
+    "backgroundColor" : "#ccb6e3"
+  },
+  {
+    "key":"636214",
+    "bank":"ayandeh",
+    "name" : "آینده",
+    "logo": "ayandeh",
+    "backgroundColor" : "#c08724"
+  },
+  {
+    "key":"627381",
+    "bank":"ansar",
+    "name" : "انصار",
+    "logo": "ansarbank",
+    "backgroundColor" : "#cecbcd"
+  },
+  {
+    "key": "639370",
+    "bank": "mehreghtesad",
+    "name" : "مهر اقتصاد",
+    "logo": "mehrEghtesad",
+    "backgroundColor" : "#c7c8c9"
+  },
+  {
+    "key": "606373",
+    "bank": "mehrIran",
+    "name" : "مهر ایران",
+    "logo": "mehrIran",
+    "backgroundColor" : "#1e8910"
+  }
+]

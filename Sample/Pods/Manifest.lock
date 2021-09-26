@@ -1,0 +1,20 @@
+PODS:
+  - ZarinPal (1.1.8)
+  - ZarinPal_MPG (1.1.8)
+
+DEPENDENCIES:
+  - ZarinPal
+  - ZarinPal_MPG
+
+SPEC REPOS:
+  trunk:
+    - ZarinPal
+    - ZarinPal_MPG
+
+SPEC CHECKSUMS:
+  ZarinPal: 1e36908ec7043724ffef44180b526d026648b0d3
+  ZarinPal_MPG: 01f526d76768b1b5227e0fef88ab0d1f69871406
+
+PODFILE CHECKSUM: f5fe70313168792e92eae7f87340a66e8a7f48a3
+
+COCOAPODS: 1.11.2

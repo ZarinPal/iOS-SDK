@@ -5,7 +5,7 @@ ZarinPal Purchase SDK Provides payment methods on your iOS Application.
 
 
 <p align="center" width="100%">
-<img src="https://github.com/ZarinPal-Lab/Android-PaymentGateway-SDK/blob/master/logo%20%E2%80%93%201.png?raw=true" alt="ZarinPal Logo" width="300" height="100"/>
+<img src="https://avatars.githubusercontent.com/u/13906725?s=200&v=4" alt="ZarinPal Logo"/>
 </p>
 
 

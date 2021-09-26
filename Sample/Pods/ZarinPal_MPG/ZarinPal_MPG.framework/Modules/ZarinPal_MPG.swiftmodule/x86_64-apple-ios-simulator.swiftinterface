@@ -1,6 +1,6 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.4 (swiftlang-1205.0.26.9 clang-1205.0.19.55)
-// swift-module-flags: -target x86_64-apple-ios14.5-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -Onone -module-name ZarinPal_MPG
+// swift-compiler-version: Apple Swift version 5.5 (swiftlang-1300.0.31.1 clang-1300.0.29.1)
+// swift-module-flags: -target x86_64-apple-ios11.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -Onone -module-name ZarinPal_MPG
 import CommonCrypto
 import CommonCrypto/*.CC_LONG*/
 import CommonCrypto/*.CC_MD5*/
@@ -9,6 +9,7 @@ import Foundation
 import Network
 import Swift
 import UIKit
+import _Concurrency
 import zlib
 public enum FoundationTransportError : Swift.Error {
   case invalidRequest
@@ -31,11 +32,10 @@ public enum FoundationTransportError : Swift.Error {
   public func register(delegate: ZarinPal_MPG.TransportEventClient)
   public func write(data: Foundation.Data, completion: @escaping ((Swift.Error?) -> ()))
   @objc open func stream(_ aStream: Foundation.Stream, handle eventCode: Foundation.Stream.Event)
-  @objc override dynamic public init()
 }
-@objc @_inheritsConvenienceInitializers public class CustomUIView : UIKit.UIView {
-  @objc override dynamic public init(frame: CoreGraphics.CGRect)
-  @objc required dynamic public init?(coder: Foundation.NSCoder)
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class CustomUIView : UIKit.UIView {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
   @objc deinit
 }
 @objc(NotificationsItem) public protocol PaymentDelegate {
@@ -85,9 +85,9 @@ public enum PurchaseType : Swift.String, Swift.Codable {
     get
   }
 }
-@objc @_inheritsConvenienceInitializers public class CustomButton : UIKit.UIButton {
-  @objc override dynamic public init(frame: CoreGraphics.CGRect)
-  @objc required dynamic public init?(coder: Foundation.NSCoder)
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class CustomButton : UIKit.UIButton {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
   @objc deinit
 }
 public enum TCPTransportError : Swift.Error {
@@ -156,7 +156,7 @@ public protocol WebSocketClient : AnyObject {
   func write(ping: Foundation.Data, completion: (() -> ())?)
   func write(pong: Foundation.Data, completion: (() -> ())?)
 }
-extension WebSocketClient {
+extension ZarinPal_MPG.WebSocketClient {
   public func write(string: Swift.String)
   public func write(data: Foundation.Data)
   public func write(ping: Foundation.Data)
@@ -217,10 +217,10 @@ public class FoundationSecurity {
   public init(allowSelfSigned: Swift.Bool = false)
   @objc deinit
 }
-extension FoundationSecurity : ZarinPal_MPG.CertificatePinning {
+extension ZarinPal_MPG.FoundationSecurity : ZarinPal_MPG.CertificatePinning {
   public func evaluateTrust(trust: Security.SecTrust, domain: Swift.String?, completion: ((ZarinPal_MPG.PinningState) -> ()))
 }
-extension FoundationSecurity : ZarinPal_MPG.HeaderValidator {
+extension ZarinPal_MPG.FoundationSecurity : ZarinPal_MPG.HeaderValidator {
   public func validate(headers: [Swift.String : Swift.String], key: Swift.String) -> Swift.Error?
 }
 @_hasMissingDesignatedInitializers public class Purchase {
@@ -306,13 +306,13 @@ public protocol HTTPServerHandler {
 }
 public struct URLParts {
 }
-extension URL {
+extension Foundation.URL {
   public var isTLSScheme: Swift.Bool {
     get
   }
   public func getParts() -> ZarinPal_MPG.URLParts?
 }
-extension Bundle {
+extension Foundation.Bundle {
   public var icon: UIKit.UIImage? {
     get
   }
@@ -422,9 +422,9 @@ public class WSFramer : ZarinPal_MPG.Framer {
 }
 public protocol MyWSArrayType {
 }
-extension UInt8 : ZarinPal_MPG.MyWSArrayType {
+extension Swift.UInt8 : ZarinPal_MPG.MyWSArrayType {
 }
-extension Array where Element : Swift.UnsignedInteger, Element : ZarinPal_MPG.MyWSArrayType {
+extension Swift.Array where Element : Swift.UnsignedInteger, Element : ZarinPal_MPG.MyWSArrayType {
   public func readUint16(offset: Swift.Int) -> Swift.UInt16
   public func readUint64(offset: Swift.Int) -> Swift.UInt64
   public func unmaskData(maskStart: Swift.Int, offset: Swift.Int, length: Swift.Int) -> Foundation.Data

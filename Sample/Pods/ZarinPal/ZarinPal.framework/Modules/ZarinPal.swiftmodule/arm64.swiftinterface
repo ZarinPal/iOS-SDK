@@ -1,5 +1,5 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.4 (swiftlang-1205.0.26.9 clang-1205.0.19.55)
+// swift-compiler-version: Apple Swift version 5.5 (swiftlang-1300.0.31.1 clang-1300.0.29.1)
 // swift-module-flags: -target arm64-apple-ios11.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -Onone -module-name ZarinPal
 import CommonCrypto
 import CommonCrypto/*.CC_LONG*/
@@ -9,6 +9,7 @@ import Foundation
 import Network
 import Swift
 import UIKit
+import _Concurrency
 import zlib
 public enum FoundationSecurityError : Swift.Error {
   case invalidRequest
@@ -22,10 +23,10 @@ public class FoundationSecurity {
   public init(allowSelfSigned: Swift.Bool = false)
   @objc deinit
 }
-extension FoundationSecurity : ZarinPal.CertificatePinning {
+extension ZarinPal.FoundationSecurity : ZarinPal.CertificatePinning {
   public func evaluateTrust(trust: Security.SecTrust, domain: Swift.String?, completion: ((ZarinPal.PinningState) -> ()))
 }
-extension FoundationSecurity : ZarinPal.HeaderValidator {
+extension ZarinPal.FoundationSecurity : ZarinPal.HeaderValidator {
   public func validate(headers: [Swift.String : Swift.String], key: Swift.String) -> Swift.Error?
 }
 public enum SecurityErrorCode : Swift.UInt16 {
@@ -104,9 +105,9 @@ public class WSFramer : ZarinPal.Framer {
 }
 public protocol MyWSArrayType {
 }
-extension UInt8 : ZarinPal.MyWSArrayType {
+extension Swift.UInt8 : ZarinPal.MyWSArrayType {
 }
-extension Array where Element : Swift.UnsignedInteger, Element : ZarinPal.MyWSArrayType {
+extension Swift.Array where Element : Swift.UnsignedInteger, Element : ZarinPal.MyWSArrayType {
   public func readUint16(offset: Swift.Int) -> Swift.UInt16
   public func readUint64(offset: Swift.Int) -> Swift.UInt64
   public func unmaskData(maskStart: Swift.Int, offset: Swift.Int, length: Swift.Int) -> Foundation.Data
@@ -119,9 +120,9 @@ public protocol CompressionHandler {
   func decompress(data: Foundation.Data, isFinal: Swift.Bool) -> Foundation.Data?
   func compress(data: Foundation.Data) -> Foundation.Data?
 }
-@objc @_inheritsConvenienceInitializers public class CustomButton : UIKit.UIButton {
-  @objc override dynamic public init(frame: CoreGraphics.CGRect)
-  @objc required dynamic public init?(coder: Foundation.NSCoder)
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class CustomButton : UIKit.UIButton {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
   @objc deinit
 }
 public enum ErrorType : Swift.Error {
@@ -150,7 +151,7 @@ public protocol WebSocketClient : AnyObject {
   func write(ping: Foundation.Data, completion: (() -> ())?)
   func write(pong: Foundation.Data, completion: (() -> ())?)
 }
-extension WebSocketClient {
+extension ZarinPal.WebSocketClient {
   public func write(string: Swift.String)
   public func write(data: Foundation.Data)
   public func write(ping: Foundation.Data)
@@ -272,7 +273,6 @@ public enum FoundationTransportError : Swift.Error {
   public func register(delegate: ZarinPal.TransportEventClient)
   public func write(data: Foundation.Data, completion: @escaping ((Swift.Error?) -> ()))
   @objc open func stream(_ aStream: Foundation.Stream, handle eventCode: Foundation.Stream.Event)
-  @objc override dynamic public init()
 }
 @_hasMissingDesignatedInitializers public class FoundationHTTPServerHandler : ZarinPal.HTTPServerHandler {
   public func register(delegate: ZarinPal.HTTPServerDelegate)
@@ -310,7 +310,7 @@ public protocol HTTPServerHandler {
 }
 public struct URLParts {
 }
-extension URL {
+extension Foundation.URL {
   public var isTLSScheme: Swift.Bool {
     get
   }
@@ -340,7 +340,7 @@ extension URL {
 @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class DirectlyPurchase : ZarinPal.Purchase {
   @objc deinit
 }
-extension Bundle {
+extension Foundation.Bundle {
   public var icon: UIKit.UIImage? {
     get
   }
@@ -396,9 +396,9 @@ public class StringHTTPHandler : ZarinPal.HTTPHandler {
   @objc func didException(exception: Foundation.NSException)
   @objc func didClose()
 }
-@objc @_inheritsConvenienceInitializers public class CustomUIView : UIKit.UIView {
-  @objc override dynamic public init(frame: CoreGraphics.CGRect)
-  @objc required dynamic public init?(coder: Foundation.NSCoder)
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class CustomUIView : UIKit.UIView {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
   @objc deinit
 }
 public enum ConnectionEvent {

@@ -11,7 +11,7 @@ import ZarinPal
 class ViewController: UIViewController,PaymentDelegate {
     
     #warning("Please get your merchant id from ZarinPal panel(https://next.zarinpal.com/panel/dashboard)")
-    let merchantID = "your merchant id"
+    let merchantID = "9b4e73dd-a1d8-430f-a725-3c84d6c65d2e"
     
     
     override func viewDidLoad() {
@@ -22,15 +22,15 @@ class ViewController: UIViewController,PaymentDelegate {
     @IBAction func btnPay(_ sender: Any) {
         
         
-        //        let purchase = Purchase.newBuilder()
-        //            .asPaymentRequest(merchantID: self.merchantID, amount: 1010, callbackURL: "https://www.google.com", description: "تست توضیحات")
-        //            .setType(type: .SHETAB)
-        //            .build()
+                let purchase = Purchase.newBuilder()
+                    .asPaymentRequest(merchantID: self.merchantID, amount: 1010, callbackURL: "https://www.google.com", description: "تست توضیحات")
+                    .setType(type: .SHETAB)
+                    .build()
         
-        let purchase = Purchase.newBuilder()
-            .asSku(id: "377443")
-            .setType(type: .SHETAB)
-            .build()
+//        let purchase = Purchase.newBuilder()
+//            .asSku(id: "377443")
+//            .setType(type: .SHETAB)
+//            .build()
         
         
         let zarinPal = ZarinPalBillingClient.newBuilder(viewController: self)

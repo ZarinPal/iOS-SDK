@@ -33,7 +33,11 @@ end
 Install pods:
 
 ```
-install pod
+pod install
+```
+or
+```
+pod install --repo-update
 ```
 
 # How to use

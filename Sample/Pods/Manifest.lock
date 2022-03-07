@@ -1,16 +1,16 @@
 PODS:
-  - ZarinPal (1.1.10)
+  - ZarinPal (1.1.11)
 
 DEPENDENCIES:
-  - ZarinPal (~> 1.1.10)
+  - ZarinPal (~> 1.1.11)
 
 SPEC REPOS:
   trunk:
     - ZarinPal
 
 SPEC CHECKSUMS:
-  ZarinPal: 94c5d2fc843e2ef92e1870952b5f62da58de69c3
+  ZarinPal: 759a859a29f51cb32aba9279f5ef872c868d1a17
 
-PODFILE CHECKSUM: 5a4adeb96e83a11713c88aec9a2bb82e56ddd42c
+PODFILE CHECKSUM: 663a3c95acda1be6fb4358c9c6d5d23300eb3088
 
 COCOAPODS: 1.11.2

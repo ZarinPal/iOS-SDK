@@ -9,9 +9,9 @@ ZarinPal Purchase SDK Provides payment methods on your iOS Application.
 </p>
 
 
-# Requirements 
+# Requirements
 
-- iOS 11.0+ 
+- iOS 11.0+
 - Xcode 12+
 - Swift 5.1+
 
@@ -25,8 +25,8 @@ Create Podfile and add ```pod 'ZarinPal'``` and ```ZarinPal_MPG```:
 use_frameworks!
 
 target 'YourApp' do
-     pod 'ZarinPal', '~> 1.1.9'
-     pod 'ZarinPal_MPG', '~> 1.1.9'
+     pod 'ZarinPal', '~> 1.1.12'
+     pod 'ZarinPal_MPG', '~> 1.1.12'
 end
 ```
 
@@ -99,11 +99,11 @@ class MyViewController: UIViewController,PaymentDelegate {
       func didClose() {
           print("did close")
       }
-      
+
       func didException(exception: NSException) {
           print("exception : \(exception.description)")
       }
-      
+
       func didReceive(receipt: [String:Any]?, raw: String?) {
           print("receipt : \(String(describing: receipt)) | raw : \(String(describing: raw)) ")
       }
@@ -118,12 +118,12 @@ Create ZarinPal Class and pass payment request and delegate:
      let zarinPal = ZarinPalBillingClient.newBuilder(viewController: self)
             .setDelegate(self)
             .build()
-            
+
       let purchase = Purchase.newBuilder()
             .asSku(id: "YOUR PRODUCT ID")
             .setType(type: .SHETAB)
             .build()
-        
+
      zarinPal.launchBillingFlow(purchase: purchase)
 ```
 
@@ -134,46 +134,46 @@ import UIKit
 import ZarinPal
 
 class ViewController: UIViewController,PaymentDelegate {
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
 
     @IBAction func btn(_ sender: Any) {
-                
+
           let purchase = Purchase.newBuilder()
                     .asPaymentRequest(merchantID: "YOUR MERCHANT ID", amount: 10000, callbackURL: "https://www.google.com", description: "Test Description for this payment")
                     .setType(type: .SHETAB) // or .ALL
                     .build()
-          
+
   //let purchase = Purchase.newBuilder()
   //          .asSku(id: "377443")
   //          .setType(type: .SHETAB)
   //          .build()
-        
+
         let zarinPal = ZarinPalBillingClient.newBuilder(viewController: self)
             .setDelegate(self)
             .build()
-     
+
         zarinPal.launchBillingFlow(purchase: purchase)
 
     }
-    
-    
+
+
       func didClose() {
           print("did close")
       }
-      
+
       func didException(exception: NSException) {
           print("exception : \(exception.description)")
       }
-      
+
       func didReceive(receipt: [String:Any]?, raw: String?) {
         print("receipt : \(String(describing: receipt)) | raw : \(String(describing: raw)) ")
       }
 
-    
+
 }
 
 
@@ -184,23 +184,22 @@ And you can get user last purchaes with call query for mobile, cardpan and user 
 
 ```Swift
         let skus = ["PRODUCT ID"]
-        
+
         let skuParams = SkuQueryParams.newBuilder(merchantID: "MERCHANT CODE")
             .setSkuList(skus)
             .orderByMobile("MOBILE")
             .orderByCardPan("CARD PAN")
             .build()
-        
+
         let zarinPal = ZarinPalBillingClient.newBuilder(viewController: self)
             .setDelegate(self)
             .build()
-        
+
         zarinPal.querySkuPurchased(query: skuParams) { purchase in
             purchase?.forEach({ skuPurchased in
                 print(skuPurchased.authority)
             })
-            
+
         }
 
 ```
-

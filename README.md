@@ -25,8 +25,8 @@ Create Podfile and add ```pod 'ZarinPal'``` and ```ZarinPal_MPG```:
 use_frameworks!
 
 target 'YourApp' do
-     pod 'ZarinPal', '~> 1.1.12'
-     pod 'ZarinPal_MPG', '~> 1.1.12'
+     pod 'ZarinPal', '~> 1.1.14'
+     pod 'ZarinPal_MPG', '~> 1.1.14'
 end
 ```
 
@@ -60,7 +60,7 @@ If you would create payment Authority on Client, You must use `Purchase.newBuild
 
 **Require Parameters:**
 
-*   Merchant id: An unique ID of your business payment gateway.
+*   Merchant ID: An unique ID of your business payment gateway [ZarinPal Panel](https://next.zarinpal.com/panel/dashboard)
 *   Amount: Amount of Purchase.
 *   Callback URL: A valid `URI` or `URL` Address for sending result purchase.
 *   Description: A Content for showing payer.
@@ -72,9 +72,13 @@ If you would create payment Authority on Client, You must use `Purchase.newBuild
 
 
 Create payment request:
+you can add custom URL Schema or your domain: [Docs](https://developer.apple.com/documentation/xcode/defining-a-custom-url-scheme-for-your-app)
+
+
 ```Swift
-  let purchase = Purchase.newBuilder()
-                    .asPaymentRequest(merchantID: "YOUR MERCHANT ID", amount: 10000, callbackURL: "https://www.google.com", description: "Test Description for this payment")
+   let callbackURL = "https://www.your_domain.com/payment" // or mycustomschema://my.app.payment
+   let purchase = Purchase.newBuilder()
+                    .asPaymentRequest(merchantID: "YOUR MERCHANT ID", amount: 10000, callbackURL: callbackURL, description: "Test Description for this payment")
                     .setType(type: .SHETAB) // or .ALL
                     .build()
 ```
@@ -145,9 +149,11 @@ class ViewController: UIViewController,PaymentDelegate {
     }
 
     @IBAction func btn(_ sender: Any) {
+    
+          let callbackURL = "https://www.your_domain.com/payment" // or mycustomschema://my.app.payment
 
           let purchase = Purchase.newBuilder()
-                    .asPaymentRequest(merchantID: "YOUR MERCHANT ID", amount: 10000, callbackURL: "https://www.google.com", description: "Test Description for this payment")
+                    .asPaymentRequest(merchantID: "YOUR MERCHANT ID", amount: 10000, callbackURL: callbackURL, description: "Test Description for this payment")
                     .setType(type: .SHETAB) // or .ALL
                     .build()
 

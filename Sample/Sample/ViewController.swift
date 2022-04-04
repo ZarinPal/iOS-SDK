@@ -10,7 +10,7 @@ import ZarinPal
 
 class ViewController: UIViewController,PaymentDelegate {
     
-    #warning("Please get your merchant id from ZarinPal panel(https://next.zarinpal.com/panel/dashboard)")
+#warning("Please get your merchant id from ZarinPal panel(https://next.zarinpal.com/panel/dashboard)")
     let merchantID = "YOUR MERCHANT ID"
     
     
@@ -21,16 +21,22 @@ class ViewController: UIViewController,PaymentDelegate {
     
     @IBAction func btnPay(_ sender: Any) {
         
+        let amount:Int64 = 10000
         
-                let purchase = Purchase.newBuilder()
-                    .asPaymentRequest(merchantID: self.merchantID, amount: 1010, callbackURL: "https://www.google.com", description: "تست توضیحات")
-                    .setType(type: .SHETAB)
-                    .build()
+        let callbackURL = "https://www.myDomain.com/payment" // or custom URL Schema for open the app(https://developer.apple.com/documentation/xcode/defining-a-custom-url-scheme-for-your-app)
         
-//        let purchase = Purchase.newBuilder()
-//            .asSku(id: "377443")
-//            .setType(type: .SHETAB)
-//            .build()
+        let description = "Test Payment Description"
+        
+        
+        let purchase = Purchase.newBuilder()
+            .asPaymentRequest(merchantID: self.merchantID, amount: amount, callbackURL: callbackURL, description: description)
+            .setType(type: .SHETAB)
+            .build()
+        
+        //        let purchase = Purchase.newBuilder()
+        //            .asSku(id: "377443")
+        //            .setType(type: .SHETAB)
+        //            .build()
         
         
         let zarinPal = ZarinPalBillingClient.newBuilder(viewController: self)

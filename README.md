@@ -65,6 +65,8 @@ If you would create payment Authority on Client, You must use `Purchase.newBuild
 *   Callback URL: A valid `URI` or `URL` Address for sending result purchase.
 *   Description: A Content for showing payer.
 
+[ZarinPal Docs](https://docs.zarinpal.com/paymentGateway/)
+
 **Optional Parameters:**
 
 *   Mobile: Valid Mobile number of payer.

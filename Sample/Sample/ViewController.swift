@@ -11,7 +11,7 @@ import ZarinPal
 class ViewController: UIViewController,PaymentDelegate {
     
     #warning("Please get your merchant id from ZarinPal panel(https://next.zarinpal.com/panel/dashboard)")
-    let merchantID = "9b4e73dd-a1d8-430f-a725-3c84d6c65d2e"
+    let merchantID = "YOUR MERCHANT ID"
     
     
     override func viewDidLoad() {

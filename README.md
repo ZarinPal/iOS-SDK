@@ -25,8 +25,8 @@ Create Podfile and add ```pod 'ZarinPal'``` and ```ZarinPal_MPG```:
 use_frameworks!
 
 target 'YourApp' do
-     pod 'ZarinPal', '~> 1.1.14'
-     pod 'ZarinPal_MPG', '~> 1.1.14'
+     pod 'ZarinPal', '~> 1.1.15'
+     pod 'ZarinPal_MPG', '~> 1.1.15'
 end
 ```
 
@@ -151,7 +151,7 @@ class ViewController: UIViewController,PaymentDelegate {
     }
 
     @IBAction func btn(_ sender: Any) {
-    
+
           let callbackURL = "https://www.your_domain.com/payment" // or mycustomschema://my.app.payment
 
           let purchase = Purchase.newBuilder()

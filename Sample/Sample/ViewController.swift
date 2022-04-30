@@ -11,7 +11,7 @@ import ZarinPal
 class ViewController: UIViewController,PaymentDelegate {
     
 #warning("Please get your merchant id from ZarinPal panel(https://next.zarinpal.com/panel/dashboard)")
-    let merchantID = "610c1652-bec2-4d70-a946-c818d199cd97"
+    let merchantID = "a738fc08-1e83-4928-bf90-08936ea6e1ed"
     
     
     override func viewDidLoad() {
@@ -23,7 +23,7 @@ class ViewController: UIViewController,PaymentDelegate {
         
         let amount:Int64 = 1010
         
-        let callbackURL = "farshid://com.payment" // or custom URL Schema for open the app(https://developer.apple.com/documentation/xcode/defining-a-custom-url-scheme-for-your-app)
+        let callbackURL = "farshid://com.payment" // Website address or custom URL Schema for open the app(https://developer.apple.com/documentation/xcode/defining-a-custom-url-scheme-for-your-app)
         
         let description = "Test Payment Description"
         

@@ -1,5 +1,5 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.5.1 (swiftlang-1300.0.31.4 clang-1300.0.29.6)
+// swift-compiler-version: Apple Swift version 5.6 (swiftlang-5.6.0.323.62 clang-1316.0.20.8)
 // swift-module-flags: -target x86_64-apple-ios12.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -Onone -module-name ZarinPal_MPG
 import CommonCrypto
 import CommonCrypto/*.CC_LONG*/
@@ -77,8 +77,7 @@ public class WSEngine : ZarinPal_MPG.Engine, ZarinPal_MPG.TransportEventClient, 
   @objc deinit
 }
 public enum PurchaseType : Swift.String, Swift.Codable {
-  case ALL
-  case SHETAB
+  case ALL, SHETAB
   public init?(rawValue: Swift.String)
   public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
@@ -185,10 +184,10 @@ open class WebSocket : ZarinPal_MPG.WebSocketClient, ZarinPal_MPG.EngineDelegate
   public var callbackQueue: Dispatch.DispatchQueue
   public var respondToPingWithPong: Swift.Bool {
     get
-    set(newValue)
+    set
   }
   public init(request: Foundation.URLRequest, engine: ZarinPal_MPG.Engine)
-  public convenience init(request: Foundation.URLRequest, certPinner: ZarinPal_MPG.CertificatePinning? = FoundationSecurity(), compressionHandler: ZarinPal_MPG.CompressionHandler? = nil, useCustomEngine: Swift.Bool = true)
+  convenience public init(request: Foundation.URLRequest, certPinner: ZarinPal_MPG.CertificatePinning? = FoundationSecurity(), compressionHandler: ZarinPal_MPG.CompressionHandler? = nil, useCustomEngine: Swift.Bool = true)
   public func connect()
   public func disconnect(closeCode: Swift.UInt16 = CloseCode.normal.rawValue)
   public func forceDisconnect()
@@ -514,7 +513,7 @@ public struct ReceiptShaparakNotOk : Swift.Codable {
   public var amount: Swift.Int64
   public var description: Swift.String
   public var date: Swift.String
-  public var message: Swift.String
+  public var message: Swift.String?
   public var ref_id: Swift.Int64
   public var receipt: ZarinPal_MPG.ReceiptUser?
   public func encode(to encoder: Swift.Encoder) throws
@@ -532,3 +531,23 @@ public struct User : Swift.Codable {
   public func encode(to encoder: Swift.Encoder) throws
   public init(from decoder: Swift.Decoder) throws
 }
+extension ZarinPal_MPG.FoundationTransportError : Swift.Equatable {}
+extension ZarinPal_MPG.FoundationTransportError : Swift.Hashable {}
+extension ZarinPal_MPG.PurchaseType : Swift.Equatable {}
+extension ZarinPal_MPG.PurchaseType : Swift.Hashable {}
+extension ZarinPal_MPG.PurchaseType : Swift.RawRepresentable {}
+extension ZarinPal_MPG.TCPTransportError : Swift.Equatable {}
+extension ZarinPal_MPG.TCPTransportError : Swift.Hashable {}
+extension ZarinPal_MPG.ErrorType : Swift.Equatable {}
+extension ZarinPal_MPG.ErrorType : Swift.Hashable {}
+extension ZarinPal_MPG.FoundationSecurityError : Swift.Equatable {}
+extension ZarinPal_MPG.FoundationSecurityError : Swift.Hashable {}
+extension ZarinPal_MPG.SecurityErrorCode : Swift.Equatable {}
+extension ZarinPal_MPG.SecurityErrorCode : Swift.Hashable {}
+extension ZarinPal_MPG.SecurityErrorCode : Swift.RawRepresentable {}
+extension ZarinPal_MPG.CloseCode : Swift.Equatable {}
+extension ZarinPal_MPG.CloseCode : Swift.Hashable {}
+extension ZarinPal_MPG.CloseCode : Swift.RawRepresentable {}
+extension ZarinPal_MPG.FrameOpCode : Swift.Equatable {}
+extension ZarinPal_MPG.FrameOpCode : Swift.Hashable {}
+extension ZarinPal_MPG.FrameOpCode : Swift.RawRepresentable {}

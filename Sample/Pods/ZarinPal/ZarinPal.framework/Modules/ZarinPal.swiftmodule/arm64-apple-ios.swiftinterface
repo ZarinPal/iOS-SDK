@@ -1,5 +1,5 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.5.1 (swiftlang-1300.0.31.4 clang-1300.0.29.6)
+// swift-compiler-version: Apple Swift version 5.6 (swiftlang-5.6.0.323.62 clang-1316.0.20.8)
 // swift-module-flags: -target arm64-apple-ios12.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -Onone -module-name ZarinPal
 import CommonCrypto
 import CommonCrypto/*.CC_LONG*/
@@ -180,10 +180,10 @@ open class WebSocket : ZarinPal.WebSocketClient, ZarinPal.EngineDelegate {
   public var callbackQueue: Dispatch.DispatchQueue
   public var respondToPingWithPong: Swift.Bool {
     get
-    set(newValue)
+    set
   }
   public init(request: Foundation.URLRequest, engine: ZarinPal.Engine)
-  public convenience init(request: Foundation.URLRequest, certPinner: ZarinPal.CertificatePinning? = FoundationSecurity(), compressionHandler: ZarinPal.CompressionHandler? = nil, useCustomEngine: Swift.Bool = true)
+  convenience public init(request: Foundation.URLRequest, certPinner: ZarinPal.CertificatePinning? = FoundationSecurity(), compressionHandler: ZarinPal.CompressionHandler? = nil, useCustomEngine: Swift.Bool = true)
   public func connect()
   public func disconnect(closeCode: Swift.UInt16 = CloseCode.normal.rawValue)
   public func forceDisconnect()
@@ -244,8 +244,7 @@ public class WSCompression : ZarinPal.CompressionHandler {
   @objc deinit
 }
 public enum PurchaseType : Swift.String, Swift.Codable {
-  case ALL
-  case SHETAB
+  case ALL, SHETAB
   public init?(rawValue: Swift.String)
   public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
@@ -474,7 +473,7 @@ public struct ReceiptShaparakNotOk : Swift.Codable {
   public var amount: Swift.Int64
   public var description: Swift.String
   public var date: Swift.String
-  public var message: Swift.String
+  public var message: Swift.String?
   public var ref_id: Swift.Int64
   public var receipt: ZarinPal.ReceiptUser?
   public func encode(to encoder: Swift.Encoder) throws
@@ -543,3 +542,23 @@ public class ServerConnection : ZarinPal.Connection, ZarinPal.HTTPServerDelegate
   public func decompress(data: Foundation.Data, isFinal: Swift.Bool) -> Foundation.Data?
   @objc deinit
 }
+extension ZarinPal.FoundationSecurityError : Swift.Equatable {}
+extension ZarinPal.FoundationSecurityError : Swift.Hashable {}
+extension ZarinPal.SecurityErrorCode : Swift.Equatable {}
+extension ZarinPal.SecurityErrorCode : Swift.Hashable {}
+extension ZarinPal.SecurityErrorCode : Swift.RawRepresentable {}
+extension ZarinPal.CloseCode : Swift.Equatable {}
+extension ZarinPal.CloseCode : Swift.Hashable {}
+extension ZarinPal.CloseCode : Swift.RawRepresentable {}
+extension ZarinPal.FrameOpCode : Swift.Equatable {}
+extension ZarinPal.FrameOpCode : Swift.Hashable {}
+extension ZarinPal.FrameOpCode : Swift.RawRepresentable {}
+extension ZarinPal.ErrorType : Swift.Equatable {}
+extension ZarinPal.ErrorType : Swift.Hashable {}
+extension ZarinPal.PurchaseType : Swift.Equatable {}
+extension ZarinPal.PurchaseType : Swift.Hashable {}
+extension ZarinPal.PurchaseType : Swift.RawRepresentable {}
+extension ZarinPal.FoundationTransportError : Swift.Equatable {}
+extension ZarinPal.FoundationTransportError : Swift.Hashable {}
+extension ZarinPal.TCPTransportError : Swift.Equatable {}
+extension ZarinPal.TCPTransportError : Swift.Hashable {}

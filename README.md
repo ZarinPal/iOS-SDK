@@ -25,8 +25,8 @@ Create Podfile and add ```pod 'ZarinPal'``` and ```ZarinPal_MPG```:
 use_frameworks!
 
 target 'YourApp' do
-     pod 'ZarinPal', '~> 1.1.15'
-     pod 'ZarinPal_MPG', '~> 1.1.15'
+     pod 'ZarinPal', '~> 1.1.16'
+     pod 'ZarinPal_MPG', '~> 1.1.16'
 end
 ```
 

@@ -28,16 +28,22 @@ class ViewController: UIViewController,PaymentDelegate {
         let description = "Test Payment Description"
         
         
-        let purchase = Purchase.newBuilder()
-            .asPaymentRequest(merchantID: self.merchantID, amount: amount, callbackURL: callbackURL, description: description)
-            .setType(type: .SHETAB)
-            .build()
+//        let purchase = Purchase.newBuilder()
+//            .asPaymentRequest(merchantID: self.merchantID, amount: amount, callbackURL: callbackURL, description: description)
+//            .setType(type: .SHETAB)
+//            .build()
         
         //        let purchase = Purchase.newBuilder()
         //            .asSku(id: "377443")
         //            .setType(type: .SHETAB)
         //            .build()
         
+        
+        
+        let purchase = Purchase.newBuilder()
+            .asAuthority(authority: "A00000000000000000000000000342199029")
+            .setType(type: .SHETAB)
+            .build()
         
         let zarinPal = ZarinPalBillingClient.newBuilder(viewController: self)
             .setDelegate(self)

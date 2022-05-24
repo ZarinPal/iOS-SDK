@@ -5,7 +5,7 @@ target 'Sample' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 
-    pod 'ZarinPal', '~> 1.1.17-beta'
-    pod 'ZarinPal_MPG', '~> 1.1.17-beta'
+    pod 'ZarinPal', '~> 1.1.18'
+    pod 'ZarinPal_MPG', '~> 1.1.18'
 
 end

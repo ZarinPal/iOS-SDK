@@ -22,9 +22,7 @@ class ViewController: UIViewController,PaymentDelegate {
     @IBAction func btnPay(_ sender: Any) {
         
         let amount:Int64 = 1010
-        
         let callbackURL = "farshid://com.payment" // Website address or custom URL Schema for open the app(https://developer.apple.com/documentation/xcode/defining-a-custom-url-scheme-for-your-app)
-        
         let description = "Test Payment Description"
         
         
@@ -41,7 +39,7 @@ class ViewController: UIViewController,PaymentDelegate {
         
         
         let purchase = Purchase.newBuilder()
-            .asAuthority(authority: "A00000000000000000000000000342199029")
+            .asAuthority(authority: "A00000000000000000000000000342696558")
             .setType(type: .SHETAB)
             .build()
         

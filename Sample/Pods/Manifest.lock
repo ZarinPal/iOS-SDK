@@ -1,10 +1,10 @@
 PODS:
-  - ZarinPal (1.1.16)
-  - ZarinPal_MPG (1.1.16)
+  - ZarinPal (1.1.17-beta)
+  - ZarinPal_MPG (1.1.17-beta)
 
 DEPENDENCIES:
-  - ZarinPal (~> 1.1.16)
-  - ZarinPal_MPG (~> 1.1.16)
+  - ZarinPal (~> 1.1.17-beta)
+  - ZarinPal_MPG (~> 1.1.17-beta)
 
 SPEC REPOS:
   trunk:
@@ -12,9 +12,9 @@ SPEC REPOS:
     - ZarinPal_MPG
 
 SPEC CHECKSUMS:
-  ZarinPal: 7bb130a0bb1043e3877e8be1de7884ef6cb3be56
-  ZarinPal_MPG: e01dd431637fbd2ed2c6a317e2ec2740ad539032
+  ZarinPal: cffb2c720a6e375fa519e08d06311372f55e1209
+  ZarinPal_MPG: a982465f92f7682c848b3e24cbcbc63e49278bd9
 
-PODFILE CHECKSUM: f015356d4db8dfa3665e5d1ad9e960fb49a2dd51
+PODFILE CHECKSUM: 1bbbbe3f59d3b0258f2a892cbe02e5a0088fbcde
 
-COCOAPODS: 1.11.2
+COCOAPODS: 1.11.3

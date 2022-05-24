@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 s.name         = 'ZarinPal'
 s.module_name  = 'ZarinPal'
-s.version      = '1.1.17-beta'
+s.version      = '1.1.18'
 s.summary      = 'ZarinPal In App Billing - Purchase SDK'
 s.description  = <<-DESC
 ZarinPal Purchase SDK Provides payment methods on your iOS Application.
